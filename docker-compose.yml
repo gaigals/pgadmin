@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    volumes:
+      - ./data/:/var/lib/pgadmin:rw
+    environment:
+      PGADMIN_LISTEN_PORT: 80
+      PGADMIN_DEFAULT_EMAIL: ${DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DEFAULT_PASSWORD}
+    restart: always
+    ports:
+      - "127.0.0.1:${PORT}:80"
